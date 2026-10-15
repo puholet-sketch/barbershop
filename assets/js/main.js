@@ -247,6 +247,26 @@
     $("base-net").className =
       "kpi__value " + (realistic.net >= 0 ? "kpi__value--pos" : "kpi__value--neg");
     $("base-cuts-day").textContent = fmt1.format(state.cutsPerDay);
+
+    const heroNet = $("hero-net");
+    const heroNeed = $("hero-need");
+    const heroNote = $("hero-note");
+    if (heroNet) {
+      heroNet.textContent = money(realistic.net);
+      heroNet.style.color =
+        realistic.net >= state.targetNet
+          ? "var(--po-gold)"
+          : realistic.net >= 0
+            ? "var(--bar-pos)"
+            : "var(--bar-neg)";
+    }
+    if (heroNeed) heroNeed.textContent = money(needR);
+    if (heroNote) {
+      heroNote.textContent =
+        perDay > 12
+          ? `К цели нужно ~${fmt1.format(perDay)} стр/день на мастера — выше типичного потолка.`
+          : `При ${fmt1.format(state.cutsPerDay)} стр/день модель даёт ${money(realistic.net)} чистыми / мес.`;
+    }
   }
 
   function renderCalc() {
