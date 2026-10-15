@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Барбершоп · Москва · PMO-модель</title>
+  <meta name="description" content="Управленческая модель: 6 мастеров, обратный счёт к 1 млн чистыми, ОКВЭД, интерьер «Чёрная кость», калькулятор окупаемости." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="po-top">
+    <div class="po-top__inner">
+      <div class="po-top__brand">Барбершоп <em>PMO</em></div>
+      <nav class="po-top__nav" aria-label="Разделы">
+        <a href="#verdict">Вердикт</a>
+        <a href="#reverse">1 млн</a>
+        <a href="#calc">Калькулятор</a>
+        <a href="#okved">ОКВЭД</a>
+        <a href="#interior">Интерьер</a>
+        <a href="#capex">CAPEX</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="po-sheet">
+    <section class="po-hero" id="verdict">
+      <p class="po-kicker">Проект · Москва · 6 кресел</p>
+      <h1>Открываем барбершоп: цифры до ремонта</h1>
+      <p class="po-hero__lead">
+        Обратный счёт к обещанию «аренда 200 тыс. → чистыми миллион», модель P&amp;L с долей барбера 50% и МРОТ Москвы,
+        ОКВЭД/саннормы и смета интерьера в духе «Чёрная кость». Бегунки ниже — живой бизнес-план по месяцам.
+      </p>
+      <div class="po-chips">
+        <span class="chip">Средний чек 1 600 ₽</span>
+        <span class="chip">Доля барбера 50%</span>
+        <span class="chip">МРОТ МСК <span id="mrot-note">39 730 ₽</span></span>
+        <span class="chip">Инструмент — свой</span>
+        <span class="chip">1 администратор</span>
+      </div>
+    </section>
+
+    <!-- 01 REVERSE -->
+    <section class="po-block" id="reverse">
+      <div class="po-block__head">
+        <span class="po-num">01</span>
+        <div>
+          <h2 class="po-h2">Обратный счёт: откуда берётся 1 млн</h2>
+          <p class="po-lead">Сколько нужно оборота и стрижек, чтобы владелец увидел заявленную чистую прибыль при ваших допущениях.</p>
+        </div>
+      </div>
+
+      <div class="po-grid-4">
+        <div class="kpi">
+          <p class="kpi__label">Нужная выручка</p>
+          <p class="kpi__value kpi__value--gold" id="rev-need">—</p>
+          <p class="kpi__hint">в месяц, до налогов не путать с «кассой»</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi__label">Стрижек в месяц</p>
+          <p class="kpi__value" id="rev-cuts">—</p>
+          <p class="kpi__hint">при среднем чеке из калькулятора</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi__label">На 1 мастера / день</p>
+          <p class="kpi__value" id="rev-per-day">—</p>
+          <p class="kpi__hint">ключ к реалистичности</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi__label">База при ваших бегунках</p>
+          <p class="kpi__value" id="base-net">—</p>
+          <p class="kpi__hint">выручка <span id="base-rev">—</span> · <span id="base-cuts-day">—</span> стр/день</p>
+        </div>
+      </div>
+
+      <div class="callout mt" id="rev-verdict"></div>
+
+      <div class="po-panel mt">
+        <p class="po-kicker">Статьи к цели «чистыми»</p>
+        <table class="data mt">
+          <thead>
+            <tr><th>Статья</th><th style="text-align:right">Сумма</th></tr>
+          </thead>
+          <tbody id="rev-table"></tbody>
+        </table>
+      </div>
+
+      <div class="two-col-text mt-lg">
+        <div class="po-panel">
+          <h3 class="sub" style="margin-top:0">Доходы (типовые)</h3>
+          <ul class="po-list">
+            <li>Стрижка / комплекс стрижка+борода — ядро выручки</li>
+            <li>Борода, опасное бритьё, укладки — поднимают средний чек</li>
+            <li>Розница: пасты, масла, шампуни (нужен доп. ОКВЭД)</li>
+            <li>Сертификаты, корпоративы, детские слоты в выходные</li>
+          </ul>
+        </div>
+        <div class="po-panel">
+          <h3 class="sub" style="margin-top:0">Затраты (типовые)</h3>
+          <ul class="po-list">
+            <li>Доля барбера 50% от услуг — главная переменная</li>
+            <li>ФОТ официальный (МРОТ×6 + админ) и взносы</li>
+            <li>Аренда, коммуналка, климат / вытяжка</li>
+            <li>Расходники салона (даже при своём инструменте): пеньюары, вода, химия для мойки, полотенца/прачечная</li>
+            <li>Маркетинг, агрегаторы записи, эквайринг ~1–2%</li>
+            <li>УСН, музыкальный сбор, охрана/видеонаблюдение, бухгалтерия</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout--warn callout mt">
+        <strong>Две модели оплаты барберов.</strong>
+        «Доля включает МРОТ» — половина выручки уходит мастеру, МРОТ оформляется внутри этой доли, салон сверху платит взносы.
+        «МРОТ сверху» — жёстче: платите и официальный ФОТ с взносами, и 50% доли. Переключатель в блоке 02.
+      </div>
+    </section>
+
+    <!-- 02 CALCULATOR -->
+    <section class="po-block" id="calc">
+      <div class="po-block__head">
+        <span class="po-num">02</span>
+        <div>
+          <h2 class="po-h2">Калькулятор доходности</h2>
+          <p class="po-lead">Крутите допущения — P&amp;L месяца и накопительный cash после CAPEX обновляются сразу. Шаг таймлайна — 1 месяц.</p>
+        </div>
+      </div>
+
+      <div class="po-grid-2">
+        <div class="po-panel">
+          <p class="po-kicker">Драйверы выручки и труда</p>
+          <div class="slider-grid mt">
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">Аренда</span><span class="slider__value" id="sl-rent-val"></span></div>
+              <input id="sl-rent" type="range" min="100000" max="500000" step="10000" value="200000" />
+            </div>
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">Мастеров</span><span class="slider__value" id="sl-masters-val"></span></div>
+              <input id="sl-masters" type="range" min="2" max="10" step="1" value="6" />
+            </div>
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">Средний чек</span><span class="slider__value" id="sl-ticket-val"></span></div>
+              <input id="sl-ticket" type="range" min="800" max="3500" step="50" value="1600" />
+            </div>
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">Доля барбера</span><span class="slider__value" id="sl-share-val"></span></div>
+              <input id="sl-share" type="range" min="30" max="70" step="1" value="50" />
+            </div>
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">Стрижек на мастера в день</span><span class="slider__value" id="sl-cuts-val"></span></div>
+              <input id="sl-cuts" type="range" min="3" max="14" step="0.5" value="8" />
+            </div>
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">Рабочих дней / мес</span><span class="slider__value" id="sl-days-val"></span></div>
+              <input id="sl-days" type="range" min="20" max="30" step="1" value="26" />
+            </div>
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">Зарплата администратора</span><span class="slider__value" id="sl-admin-val"></span></div>
+              <input id="sl-admin" type="range" min="40000" max="120000" step="1000" value="55000" />
+            </div>
+          </div>
+
+          <h3 class="sub">Модель оплаты барберов</h3>
+          <div class="seg" data-seg-group="pay">
+            <button type="button" data-seg="pay" data-value="share_includes">Доля включает МРОТ</button>
+            <button type="button" data-seg="pay" data-value="on_top">МРОТ сверху + доля</button>
+          </div>
+
+          <h3 class="sub">Налог</h3>
+          <div class="seg">
+            <button type="button" data-seg="tax" data-value="usn6">УСН 6%</button>
+            <button type="button" data-seg="tax" data-value="usn15">УСН 15%</button>
+          </div>
+        </div>
+
+        <div class="po-panel">
+          <p class="po-kicker">Фикс, налог, цель, CAPEX</p>
+          <div class="slider-grid mt">
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">Взносы с ФОТ</span><span class="slider__value" id="sl-contrib-val"></span></div>
+              <input id="sl-contrib" type="range" min="15" max="30" step="0.5" value="30" />
+            </div>
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">Расходники, % выручки</span><span class="slider__value" id="sl-cons-val"></span></div>
+              <input id="sl-cons" type="range" min="1" max="8" step="0.5" value="3" />
+            </div>
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">Коммуналка / климат</span><span class="slider__value" id="sl-util-val"></span></div>
+              <input id="sl-util" type="range" min="15000" max="120000" step="5000" value="45000" />
+            </div>
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">Маркетинг</span><span class="slider__value" id="sl-mkt-val"></span></div>
+              <input id="sl-mkt" type="range" min="0" max="200000" step="5000" value="60000" />
+            </div>
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">Прочий фикс</span><span class="slider__value" id="sl-other-val"></span></div>
+              <input id="sl-other" type="range" min="10000" max="150000" step="5000" value="35000" />
+            </div>
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">Цель чистыми</span><span class="slider__value" id="sl-target-val"></span></div>
+              <input id="sl-target" type="range" min="100000" max="2000000" step="50000" value="1000000" />
+            </div>
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">CAPEX (ремонт + интерьер)</span><span class="slider__value" id="sl-capex-val"></span></div>
+              <input id="sl-capex" type="range" min="1500000" max="12000000" step="100000" value="5500000" />
+            </div>
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">Горизонт плана</span><span class="slider__value" id="sl-months-val"></span></div>
+              <input id="sl-months" type="range" min="6" max="36" step="1" value="24" />
+            </div>
+            <div class="slider">
+              <div class="slider__head"><span class="slider__label">Рампа загрузки</span><span class="slider__value" id="sl-ramp-val"></span></div>
+              <input id="sl-ramp" type="range" min="0" max="8" step="1" value="4" />
+            </div>
+          </div>
+          <p class="kpi__hint mt">Рампа: старт ~45% целевой загрузки, выход на 100% за N месяцев (реклама, база клиентов, набор мастеров).</p>
+        </div>
+      </div>
+
+      <div class="po-grid-4 mt">
+        <div class="kpi">
+          <p class="kpi__label">Выручка / мес (100%)</p>
+          <p class="kpi__value" id="kpi-rev">—</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi__label">Чистыми / мес (100%)</p>
+          <p class="kpi__value" id="kpi-net">—</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi__label">Операционный плюс</p>
+          <p class="kpi__value kpi__value--pos" id="kpi-be">—</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi__label">Отбив CAPEX</p>
+          <p class="kpi__value kpi__value--gold" id="kpi-payback">—</p>
+        </div>
+      </div>
+
+      <div class="po-grid-2 mt">
+        <div class="po-panel">
+          <p class="po-kicker">P&amp;L полного месяца</p>
+          <table class="data mt">
+            <thead><tr><th>Статья</th><th style="text-align:right">₽</th></tr></thead>
+            <tbody id="pnl-table"></tbody>
+          </table>
+        </div>
+        <div class="po-panel">
+          <p class="po-kicker">Накопительный cash · шаг 1 мес</p>
+          <p class="kpi__hint" id="tl-summary"></p>
+          <div class="legend">
+            <span><i class="n"></i>cash &lt; 0</span>
+            <span><i class="p"></i>cash ≥ 0 (CAPEX отбит)</span>
+            <span><i class="g"></i>месяц окупаемости</span>
+          </div>
+          <div class="timeline" id="timeline"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 OKVED -->
+    <section class="po-block" id="okved">
+      <div class="po-block__head">
+        <span class="po-num">03</span>
+        <div>
+          <h2 class="po-h2">ОКВЭД и особенности бизнеса</h2>
+          <p class="po-lead">Что указать при регистрации и какие требования почти всегда всплывают в Москве.</p>
+        </div>
+      </div>
+
+      <div class="po-panel">
+        <table class="data">
+          <thead>
+            <tr><th>Код</th><th>Назначение</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>96.02</strong></td>
+              <td>Основной. Услуги парикмахерских и салонов красоты: стрижка, мытьё, укладка, бритьё, борода. Без него барбершоп не «белый».</td>
+            </tr>
+            <tr>
+              <td>47.75</td>
+              <td>Розница косметики / средств для волос и бороды в зале.</td>
+            </tr>
+            <tr>
+              <td>47.19</td>
+              <td>Прочая розница (аксессуары, мерч), если продаёте не только косметику.</td>
+            </tr>
+            <tr>
+              <td>47.91</td>
+              <td>Если будет интернет-витрина / доставка своих средств.</td>
+            </tr>
+            <tr>
+              <td>56.10 / 56.30</td>
+              <td>Только если полноценный бар/кофейня с кухней или алкоголем — иначе лучше не тянуть лишний контур проверок.</td>
+            </tr>
+            <tr>
+              <td>82.99 / 63.99</td>
+              <td>По желанию: подарочные сертификаты, онлайн-запись как отдельная услуга (часто хватает 96.02).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="two-col-text mt">
+        <div class="po-panel">
+          <h3 class="sub" style="margin-top:0">Обязательный контур</h3>
+          <ul class="po-list">
+            <li>ИП или ООО + касса 54‑ФЗ / эквайринг</li>
+            <li>Уведомление Роспотребнадзора о начале деятельности (бытовые услуги)</li>
+            <li>СанПиН для парикмахерских: мойка/дезинфекция, зоны, бельё, журнал</li>
+            <li>Медкнижки у всех, кто в контакте с клиентом</li>
+            <li>Договор на вывоз отходов (в т.ч. волосы), стирка/обработка белья</li>
+            <li>Пожарная безопасность, план эвакуации, огнетушители</li>
+            <li>Согласия на ПДн в онлайн-записи</li>
+          </ul>
+        </div>
+        <div class="po-panel">
+          <h3 class="sub" style="margin-top:0">Москва · на что смотреть</h3>
+          <ul class="po-list">
+            <li>МРОТ города с 01.01.2026 — <strong>39 730 ₽</strong> (не федеральные 27 093)</li>
+            <li>Взносы: с 2026 пониженный тариф МСП 15% — только для ОКВЭД из приоритетного перечня; <em>96.02 обычно не в нём</em> → закладывайте ~30% (плюс травматизм)</li>
+            <li>Аренда: назначение помещения под бытовые услуги / свободное; согласование вывески</li>
+            <li>Вентиляция и водопровод к мойкам — часто дороже «красивых кресел»</li>
+            <li>Если франшиза «Чёрная кость» — отдельно паушальный / роялти / брендбук (эта страница — про свой салон «в стиле», не про покупку франшизы)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 INTERIOR -->
+    <section class="po-block" id="interior">
+      <div class="po-block__head">
+        <span class="po-num">04</span>
+        <div>
+          <h2 class="po-h2">Интерьер «как Чёрная кость»</h2>
+          <p class="po-lead">Олдскул / мужской клуб: кожа, тёмное дерево, кирпич, винтажные рамы, радиотехника, лёгкий «брутал» в декоре — без глянцевого салона красоты.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        Ориентир по рынку оборудования РФ / Москва 2025–2026. Цены — вилка «нормальный б/у → новый mid/premium». Итоговая смета зависит от м² и состояния коробки.
+      </div>
+
+      <div class="po-panel mt">
+        <table class="data">
+          <thead>
+            <tr><th>Позиция</th><th>Кол-во (на 6)</th><th>Цена за ед.</th><th>На что смотреть</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Барбер-кресло (кожа, гидравлика, подножка)</td>
+              <td>6</td>
+              <td><span class="price-tag">45–110 тыс</span></td>
+              <td>Винтажный силуэт / чёрная или коричневая кожа. Бюджет mid: ~70–90 тыс.</td>
+            </tr>
+            <tr>
+              <td>Зеркало в деревянной / «старой» раме + консоль</td>
+              <td>6</td>
+              <td><span class="price-tag">18–55 тыс</span></td>
+              <td>Тёмное дерево, патина; подсветка отдельно.</td>
+            </tr>
+            <tr>
+              <td>Мойка / раковина для головы (станция)</td>
+              <td>2–3</td>
+              <td><span class="price-tag">35–95 тыс</span></td>
+              <td>+ подвод воды/канализации 30–80 тыс на точку.</td>
+            </tr>
+            <tr>
+              <td>Тележка / помощник барбера</td>
+              <td>6</td>
+              <td><span class="price-tag">8–25 тыс</span></td>
+              <td>Чёрный металл / дерево.</td>
+            </tr>
+            <tr>
+              <td>Ресепшен / барная стойка</td>
+              <td>1</td>
+              <td><span class="price-tag">80–220 тыс</span></td>
+              <td>Массив / шпон, место под кассу и кофе.</td>
+            </tr>
+            <tr>
+              <td>Диван / банкетки ожидания (кожа)</td>
+              <td>1–2 + пуфы</td>
+              <td><span class="price-tag">40–120 тыс</span></td>
+              <td>«Клубная» посадка, не пластик.</td>
+            </tr>
+            <tr>
+              <td>Свет: индустриальные подвесы, бра, треки</td>
+              <td>комплект</td>
+              <td><span class="price-tag">80–250 тыс</span></td>
+              <td>Тёплый свет 2700–3000K у кресел.</td>
+            </tr>
+            <tr>
+              <td>Аудио (колонки + усилитель / мультирум)</td>
+              <td>1 комплект</td>
+              <td><span class="price-tag">40–120 тыс</span></td>
+              <td>+ лицензия на публичное исполнение музыки.</td>
+            </tr>
+            <tr>
+              <td>TV + консоль (ожидание)</td>
+              <td>1</td>
+              <td><span class="price-tag">50–100 тыс</span></td>
+              <td>Как у референса сети — «посидеть», не только стрижка.</td>
+            </tr>
+            <tr>
+              <td>Декор: рамы, постеры, радиотехника, «брутал»-акценты</td>
+              <td>пакет</td>
+              <td><span class="price-tag">80–300 тыс</span></td>
+              <td>Черепа/топоры — дозированно; важнее дерево и кирпич.</td>
+            </tr>
+            <tr>
+              <td>Вывеска + навигация + брендинг в зале</td>
+              <td>пакет</td>
+              <td><span class="price-tag">60–200 тыс</span></td>
+              <td>Согласование вывески в Москве — отдельный срок.</td>
+            </tr>
+            <tr>
+              <td>Видеонаблюдение + Wi‑Fi + роутинг кассы</td>
+              <td>пакет</td>
+              <td><span class="price-tag">40–120 тыс</span></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="po-panel mt">
+        <h3 class="sub" style="margin-top:0">Расходники и «мелочь», о которой забывают</h3>
+        <ul class="po-list">
+          <li>Пеньюары, воротнички, полотенца, корзины для белья</li>
+          <li>Дозаторы, банки под расчёски (даже если машинки свои)</li>
+          <li>Кофемашина / фильтр-кофе, одноразовая посуда или стекло</li>
+          <li>Стойка под розницу, пакеты, ценники</li>
+          <li>Первичный запас химии для дезинфекции и мойки инструмента</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 05 CAPEX -->
+    <section class="po-block" id="capex">
+      <div class="po-block__head">
+        <span class="po-num">05</span>
+        <div>
+          <h2 class="po-h2">Сводка капитальных затрат</h2>
+          <p class="po-lead">База для бегунка CAPEX в калькуляторе. Подставьте свою цифру после замера помещения.</p>
+        </div>
+      </div>
+
+      <div class="po-grid-3">
+        <div class="kpi">
+          <p class="kpi__label">Ремонт «коробка → лофт»</p>
+          <p class="kpi__value">2,5–6 млн</p>
+          <p class="kpi__hint">~80–120 м² · стены, пол, электрика, вода к мойкам, вентиляция</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi__label">Мебель + свет + звук</p>
+          <p class="kpi__value">1,5–3,5 млн</p>
+          <p class="kpi__hint">6 кресел mid + мойки + ресепшен + декор</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi__label">Итого к открытию</p>
+          <p class="kpi__value kpi__value--gold">4–10 млн</p>
+          <p class="kpi__hint">В калькуляторе старт 5,5 млн — середина вилки</p>
+        </div>
+      </div>
+
+      <div class="callout mt">
+        <strong>Практичный порядок:</strong> сначала договор аренды и инженерия (вода, вытяжка, электрика под 6 кресел), потом кресла и «красивости».
+        Иначе рискуете купить интерьер в помещение, которое не согласует СЭС или управляющая.
+      </div>
+    </section>
+
+    <p class="footnote">
+      Модель управленческая, не налоговая консультация и не оферта. МРОТ Москвы и режим взносов МСП уточняйте на дату открытия.
+      Референс атмосферы — открытые описания сети «Чёрная кость»; страница не связана с правообладателем бренда.
+    </p>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

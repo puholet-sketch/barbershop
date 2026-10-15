@@ -1,0 +1,13 @@
+{
+  "v": 4,
+  "updated": "2026-10-16",
+  "status": "active",
+  "goal": "PMO-модель барбершопа Москва: 1M-чек, ОКВЭД, интерьер, калькулятор окупаемости",
+  "next": "Открыть index.html и прогнать сценарии бегунками",
+  "blockers": [],
+  "hot_files": [
+    "index.html",
+    "assets/js/main.js",
+    "assets/css/style.css"
+  ]
+}
